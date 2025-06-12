@@ -1,0 +1,1 @@
+PGPASSWORD=Rstc684ioU2WOt31KQOm6xaw3aAgJYwp psql -h dpg-d15h8h3e5dus739mctng-a.oregon-postgres.render.com -U tasks_db_z882_user tasks_db_z882
