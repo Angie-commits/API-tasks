@@ -1,22 +1,18 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
+// prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite" // or "postgresql" / "mysql"
   url      = env("DATABASE_URL")
 }
+
 model Task {
-  id String @id@default(uuid())
-  title  String @map("task_title")
-  description String @map ("Task_description")
-  isCompleted Boolean  @map("is_completed")@default(false)
-  createdAt DateTime @default(now())@map("created_at")
-  updatedAt DateTime @updatedAt
+  id              String   @id @default(uuid())
+  task_title      String
+  Task_description String
+  is_completed    Boolean  @default(false)
+  created_at      DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }

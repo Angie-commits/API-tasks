@@ -1,11 +1,17 @@
 -- CreateTable
-CREATE TABLE "Task" (
-    "id" TEXT NOT NULL,
-    "task_title" TEXT NOT NULL,
-    "Task_description" TEXT NOT NULL,
-    "is_completed" BOOLEAN NOT NULL DEFAULT false,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
+export async function up(db) {
+  await db.run(`
+    CREATE TABLE "Task" (
+      "id" TEXT PRIMARY KEY,
+      "task_title" TEXT NOT NULL,
+      "Task_description" TEXT NOT NULL,
+      "is_completed" BOOLEAN NOT NULL DEFAULT false,
+      "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      "updatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+}
 
-    CONSTRAINT "Task_pkey" PRIMARY KEY ("id")
-);
+export async function down(db) {
+  await db.run(`DROP TABLE "Task";`);
+}
